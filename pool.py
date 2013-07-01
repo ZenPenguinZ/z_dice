@@ -32,21 +32,4 @@ class Dice_Cup(object):
         return self.cup.pop()
 
 
-pool = Dice_Cup()
-print len(pool.cup)
-print pool
-pool.shuffle()
-print ""
 
-print pool.get_die()
-print len(pool.cup)
-print pool.get_die()
-print len(pool.cup)
-print pool.get_die()
-print len(pool.cup)
-print pool.get_die()
-print len(pool.cup)
-print pool.get_die()
-print len(pool.cup)
-print pool.get_die()
-print len(pool.cup)
