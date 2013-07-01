@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# Filename: dice.py
+
 class Player(object):
     """ defines an individual player"""
     WINNING_BRAIN_COUNT = 13
