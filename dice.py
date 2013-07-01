@@ -1,4 +1,7 @@
-import random
+#!/usr/bin/python
+# Filename: dice.py
+
+from random import randrange
 
 class Die(object):
     """takes a color attr and defines a die"""
