@@ -49,22 +49,3 @@ class Die(object):
     def is_run(self):
         return self.sides[self.side_up] == self.RUN
 
-d = Die("yellow")
-b = 0
-r = 0
-s = 0
-for i in range(999):
-    d.roll_die()
-    print d
-#    print d
-    if d.is_brains():
-        b +=1
-    elif d.is_shot():
-        s +=1
-    elif d.is_run():
-        r +=1
-    else:
-        print "error",
-print ""
-print "b",b," r",r," s",s
-        
