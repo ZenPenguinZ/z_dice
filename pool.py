@@ -29,6 +29,7 @@ class Dice_Cup(object):
         return shuffle(self.cup)
     def get_die(self):
         if len(self.cup) < 1:
+            print "refreshing cup"
             self.__init__()
         self.shuffle()
         return self.cup.pop()

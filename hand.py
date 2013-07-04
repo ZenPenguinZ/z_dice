@@ -29,28 +29,11 @@ class Hand(object):
             if temp_die.is_brains():
                 self.brains += 1
             if temp_die.is_shot():
-                if self.shots >= 2:
+                self.shots += 1
+                if self.shots >= 3:
                     print "Your Dead! End of turn"
                     return False  #your Dead, turn over
-                self.shots += 1
             if temp_die.is_run():
                 self.dice.append(temp_die) #append back to last die in hand
         return True #you survived
 
-
-
-p = Dice_Cup()
-print p
-p.shuffle()
-h = Hand()
-
-h.fill_hand(p)
-h.roll_hand()
-print h
-while h.score_hand() and h.brains < 13:
-    print "brains = ",h.brains,"shots = ",h.shots
-    h.fill_hand(p)
-    print "rolling"
-    h.roll_hand()
-    print h
-print "You win with %s brains in the bag" % (h.brains)
