@@ -13,7 +13,7 @@ class Die(object):
     YELLOW = (BRAINS,RUN,SHOT,BRAINS,RUN,SHOT)
     RED =         (SHOT,RUN,SHOT,BRAINS,SHOT,RUN)
     assert len(GREEN) ==  NUMBER_SIDES and  len(RED) ==  NUMBER_SIDES and  len(YELLOW) ==  NUMBER_SIDES
-    def __init__(self, sides, side_up = 0):
+    def __init__(self, sides , side_up = 0):
         if sides == "green":
             self.sides = self.GREEN
         elif sides == "yellow":
@@ -21,14 +21,15 @@ class Die(object):
         elif sides == "red":
             self.sides = self.RED
         else:
-            return False
+            self.sides = "error"
+            print "Failed to init Die"
         self.side_up = side_up
     def __repr__(self):
-        if self.is_green:
+        if self.is_green():
             return "Green %s" % self.sides[self.side_up]
-        elif self.is_yellow:
+        elif self.is_yellow():
             return "Yellow %s" % self.sides[self.side_up]
-        elif self.is_red:
+        elif self.is_red():
             return "Red %s" % self.sides[self.side_up]
         else:
             return "error"
@@ -48,4 +49,5 @@ class Die(object):
         return self.sides[self.side_up] == self.SHOT
     def is_run(self):
         return self.sides[self.side_up] == self.RUN
+
 

@@ -20,46 +20,37 @@ class Hand(object):
             return self.dice
         for x in range(len(self.dice),self.HAND_SIZE):
             self.dice.append(dice_cup.get_die())
+    def roll_hand(self):
+        for d in self.dice:
+            d.roll_die()
     def score_hand(self):
         for i in range(len(self.dice)):
             temp_die = self.dice.pop(0)  #pop first die in hand
             if temp_die.is_brains():
                 self.brains += 1
-                print "score brains"
             if temp_die.is_shot():
                 if self.shots >= 2:
-                    print "end of turn"
+                    print "Your Dead! End of turn"
+                    return False  #your Dead, turn over
                 self.shots += 1
             if temp_die.is_run():
                 self.dice.append(temp_die) #append back to last die in hand
+        return True #you survived
 
 
 
-        """
-        for i,d in enumerate(self.dice):
-            print "in score_hand ",i
-            if d.is_brains():
-                self.brains += 1
-                print "score brains"
-                del d  #self.dice[i]
-            elif d.is_shot():
-                if self.shots >= 2:
-                    print "end of turn"
-                self.shots += 1
-                del d  #self.dice[i]
-                print   "score shot"
-            elif d.is_run():
-                print "runner, keep in hand"
-            else:
-                print "error"
-"""
 p = Dice_Cup()
+print p
+p.shuffle()
 h = Hand()
-#print "empty hand ",h, "length",len(h.dice)
 
 h.fill_hand(p)
-print "filled hand ",h, "length",len(h.dice)
-h.score_hand()
-print "brains = ", h.brains, "shots = ",h.shots
-print "hand after scoreing",h, "length",len(h.dice)
-
+h.roll_hand()
+print h
+while h.score_hand() and h.brains < 13:
+    print "brains = ",h.brains,"shots = ",h.shots
+    h.fill_hand(p)
+    print "rolling"
+    h.roll_hand()
+    print h
+print "You win with %s brains in the bag" % (h.brains)
