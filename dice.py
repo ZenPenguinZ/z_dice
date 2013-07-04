@@ -24,7 +24,47 @@ class Die(object):
             return False
         self.side_up = side_up
     def __repr__(self):
-        return  "the dice has 6 sides the side that is up is %s" % self.sides[self.side_up]
+        if self.is_green:
+            return "Green %s" % self.sides[self.side_up]
+        elif self.is_yellow:
+            return "Yellow %s" % self.sides[self.side_up]
+        elif self.is_red:
+            return "Red %s" % self.sides[self.side_up]
+        else:
+            return "error"
     def roll_die(self):
-        self.side_up = random.randrange(self.NUMBER_SIDES)
+        self.side_up = randrange(self.NUMBER_SIDES)
+#is Color series, returns true if match
+    def is_green(self):
+        return self.sides == self.GREEN
+    def is_yellow(self):
+        return self.sides == self.YELLOW
+    def is_red(self):
+        return self.sides == self.RED
+#is Action series,  returns true if match
+    def is_brains(self):
+        return self.sides[self.side_up] == self.BRAINS
+    def is_shot(self):
+        return self.sides[self.side_up] == self.SHOT
+    def is_run(self):
+        return self.sides[self.side_up] == self.RUN
 
+d = Die("yellow")
+b = 0
+r = 0
+s = 0
+for i in range(999):
+    d.roll_die()
+    print d
+#    print d
+    if d.is_brains():
+        b +=1
+    elif d.is_shot():
+        s +=1
+    elif d.is_run():
+        r +=1
+    else:
+        print "error",
+print ""
+print "b",b," r",r," s",s
+        

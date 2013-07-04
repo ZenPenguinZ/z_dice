@@ -5,6 +5,7 @@ from dice import Die
 from random import shuffle
 
 class Dice_Cup(object):
+    """Cup of dice to draw from"""
     NUMBER_RED = 3
     NUMBER_GREEN = 6
     NUMBER_YELLOW = 4
@@ -32,14 +33,7 @@ class Dice_Cup(object):
         self.shuffle()
         return self.cup.pop()
         
-
-
-dc = Dice_Cup()
-print len(dc.cup)
-dc.shuffle()
-for i in range(20):
-    print len(dc.cup),i
-    print dc.get_die()        
+        
         
         
 
