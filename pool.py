@@ -12,7 +12,6 @@ class Dice_Cup(object):
     cup = []
     assert NUMBER_RED + NUMBER_GREEN + NUMBER_YELLOW  == POOL_SIZE
     def __init__(self):
-        print "init"
         for x in range(self.NUMBER_RED):
              self.cup.append(Die("red"))
         for x in range(self.NUMBER_GREEN):
@@ -28,8 +27,20 @@ class Dice_Cup(object):
     def shuffle(self):
         return shuffle(self.cup)
     def get_die(self):
+        if len(self.cup) < 1:
+            self.__init__()
         self.shuffle()
         return self.cup.pop()
+        
 
+
+dc = Dice_Cup()
+print len(dc.cup)
+dc.shuffle()
+for i in range(20):
+    print len(dc.cup),i
+    print dc.get_die()        
+        
+        
 
 
