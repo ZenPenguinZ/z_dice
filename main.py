@@ -25,36 +25,31 @@ while game_on:
         turn = True
         while turn:
             print "brains = %s shots = %s" %(hand.brains,hand.shots)
+            print "hand -> %s" %(hand)
             input = raw_input("(y) to roll, (n) to quit and bank your brains")
             if str(input.lower()) == "n":
                 current_player.bank_brains(hand.brains)
-                turn = False
+                if current_player.has_won():
+                    print "))))---- YOU WON! ----((((("
+                    game_on == False
+                    break
+                else:
+                    turn = False
+
             else:
                 hand.fill_hand(cup) #fill hand from cup
                 hand.roll_hand()    #roll hand
                 print hand
-                input = raw_input("this is your roll")
+                #input = raw_input("this is your roll")
                 if not hand.score_hand():
                     print "Bang! your dead, turn over"
                     turn = False
                 else:
-                    print "you servived this time ", current_player.name
+                    if current_player.has_won():
+                        print "))))---- YOU WON! ----((((("
+                        game_on == False
+                        #break
+                    else:
+                        print "you servived this time ", current_player.name
         print "end of turn loop"
 
-
-"""
-    while h.score_hand()and h.brains < 13:
-        h.fill_hand(p)
-        #print "rolling"
-        h.roll_hand()
-        rolls += 1
-        #print h
-    print "End of Game, rolles = ",rolls," brains = ",h.brains
-    games += 1
-    if h.shots < 3:
-        print "You win with %s brains in the bag" % (h.brains)
-        print "------------------ Winner! ----------------------------"
-        break
-print "games = ",games
-
-"""
