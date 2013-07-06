@@ -15,4 +15,22 @@ class Player(object):
         else:
             return False
 
+class Players_Group(object):
+    """Defines the group of players in a round robbin linked list"""
+    player_group = []
+    def __init__(self, player_group=None):
+        if player_group is None:
+            player_group = []
+            self.player_group = player_group
+    def __repr__(self):
+        temp = []
+        for i in self.player_group:
+            temp.append(i.__repr__())
+        return "\n".join(temp)
+    def add_player(self, name):
+        self.player_group.append(Player(name))
 
+
+
+        
+        

@@ -4,7 +4,14 @@
 from dice import Die
 from pool import Dice_Cup
 from hand import Hand
+from players import Player, Players_Group
+pg = Players_Group()
+for player in ["Dave","Dawn","Dugg","Slug"]:
+    pg.add_player(player)
+    
 
+
+print pg
 
 games = 0
 while True:
