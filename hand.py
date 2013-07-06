@@ -31,7 +31,6 @@ class Hand(object):
             if temp_die.is_shot():
                 self.shots += 1
                 if self.shots >= 3:
-                    print "Your Dead! End of turn"
                     return False  #your Dead, turn over
             if temp_die.is_run():
                 self.dice.append(temp_die) #append back to last die in hand

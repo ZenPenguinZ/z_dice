@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # Filename: dice.py
 
+from random import shuffle
+
 class Player(object):
     """ defines an individual player"""
     WINNING_BRAIN_COUNT = 13
@@ -14,6 +16,9 @@ class Player(object):
             return True
         else:
             return False
+    def bank_brains(self, brains):
+        self.brain_count += brains
+
 
 class Players_Group(object):
     """Defines the group of players in a round robbin linked list"""
@@ -29,6 +34,8 @@ class Players_Group(object):
         return "\n".join(temp)
     def add_player(self, name):
         self.player_group.append(Player(name))
+    def shuffle_players(self):
+        shuffle(self.player_group)
 
 
 
